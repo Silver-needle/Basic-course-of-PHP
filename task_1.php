@@ -12,8 +12,5 @@ while ($answer !== 810 && $answer !== 988 && $answer !== 740);
     case $answer == 988:
       echo 'Молодец-огурец!';
       break;
-      default:
-      echo $answer;
-      break;
   };
 
