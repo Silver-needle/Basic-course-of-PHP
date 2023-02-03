@@ -1,18 +1,19 @@
 <?php
-$answer = (int)readline ("В каком году произошло крещение Руси? /n
-- 810 /n
-- 988 /n
-- 740 /n")
+do
+  $answer = (int)readline("В каком году произошло крещение Руси?
+  - 810  
+  - 988  
+  - 740 ");
+while ($answer !== 810 && $answer !== 988 && $answer !== 740);
+  switch (true) {
+    case $answer == 810 || $answer == 740:
+      echo 'Иди учись';
+      break;
+    case $answer == 988:
+      echo 'Молодец-огурец!';
+      break;
+      default:
+      echo $answer;
+      break;
+  };
 
-switch ($answer)
-{
-case $answer == 810 || $answer == 740: 
-echo 'Иди учись';
-break;
-case $answer == 988:
-  echo 'Молодец-огурец!';
-  break;
-defoult: 
-echo 'Кого ты хочешь обмануть?\)';
-};
-?>
