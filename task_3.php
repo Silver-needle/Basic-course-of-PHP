@@ -1,6 +1,6 @@
 <?php
-//Повторила с урока
-$number = rand(1, 20);
+$number = (int)readline('Введите число');
+
 if ($number > 5) {
   $finger = 4;
   $inc = -1;
