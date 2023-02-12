@@ -4,12 +4,12 @@ $arrEpithets = ['бесстыдного', 'злостного', 'фееричн�
 $name = readline('Введите, пожалуйста, имя именинника   ');
 
 for ($i = 0; $i <= 2; $i++) {
-    $ranE = $arrEpithets[array_rand($arrEpithets)];
-    $ranW = $arrWishes[array_rand($arrWishes)];
-    $phrases[] = $ranE . ' ' . $ranW;
-    
+    $indexRanE = array_rand($arrEpithets);
+    $indexRanW = array_rand($arrWishes);
+    $phrases[] =  $arrEpithets[$indexRanE] . ' ' . $arrWishes[$indexRanW];;
+    unset($arrEpithets[$indexRanE]);
+    unset($arrWishes[$indexranW]);
 }
-//unset($ranE[$arrEpithets], $ranW[$arrWishes]);
 
 print_r($phrases);
 echo 'Дорогой(-ая), ' . $name . ', поздравляю тебя с днем рождения! Желаю ' . implode(', ', $phrases) . '!';

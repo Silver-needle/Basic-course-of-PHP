@@ -21,6 +21,8 @@ $students = [
    ]
 ];
 $losers = [];
+$sumGrades = 0;
+$maxGrade = 0;
 
 foreach ($students as $group => $list) {
    foreach ($list as $name => $grade) {
@@ -30,12 +32,12 @@ foreach ($students as $group => $list) {
       }
    }
    $allSumGrade = $sumGrades / count($list);
-   echo($group . ': ' . round($allSumGrade, 2)) . PHP_EOL;
+   echo $group . ': ' . round($allSumGrade, 1) . PHP_EOL;
    if ($allSumGrade > $maxGrade) {
-      $maxGrade = round($allSumGrade, 2);
+      $maxGrade = round($allSumGrade, 1);
       $liders = $group;
    }
 }
-echo ('Лидеры: ' . $liders . ' - ' . $maxGrade) . PHP_EOL;
-echo('Список на отчисление: \n');
+echo 'Лидеры: ' . $liders . ' - ' . $maxGrade . PHP_EOL;
+echo 'Список на отчисление: ';
 print_r($losers) . PHP_EOL;
