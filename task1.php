@@ -1,16 +1,52 @@
 <?php
-$arrNum = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
+class Task
+{
+   private User $user;
+   private int $priority;
+   private string $description;
 
-$check = array_map(function (int $num): string {
-   if ($num % 2 == 0) {
-      $print = "$num - четное";
-   } else {
-      $print = "$num - нечетное";
+   private string $dateCreated;
+
+   private string $dateUpdated;
+
+   private bool $isDone = false;
+   private string $dateDone;
+
+function __construct(User $user, int $priority, string $description) {
+   $this->user = $user;
+   $this->priority = $priority;
+   $this->description = $description;
+   $this->dateCreated = $this->dateUpdated = date('Y-m-d H:i:s');
+}
+
+public function setDescription(string $description): void {
+   $this->description = $description;
+   $this->dateUpdated = date('Y-m-d H:i:s');
+}
+public function getDescription(): string {
+   return $this->description;
+}
+
+public function markAsDone(): void {
+   $this->dateDone = $this->dateUpdated = date('Y-m-d H:i:s');
+   $this->isDone = true;
+}
+}
+
+class User
+{
+   private string $username;
+   private string $email;
+
+   function __construct(string $username, string $email) {
+      $this->username = $username;
+      $this->email = $email;
    }
+}
 
-   return $print;
-}, $arrNum);
-
-print_r($check);
-
+$user = new User('Ivan', 'ivan@mail.ru');
+$task = new Task ($user, 1, 'Little');
+$task->setDescription('newDescription');
+$task->markAsDone();
+var_dump($task);
 ?>
