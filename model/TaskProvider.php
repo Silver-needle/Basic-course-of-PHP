@@ -2,6 +2,7 @@
 
 class TaskProvider
 {
+
     public static function addTask(Task $task): void
     {
         $_SESSION['tasks'][] = $task;
