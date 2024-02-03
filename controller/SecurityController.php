@@ -2,7 +2,6 @@
 /* @var $pdo PDO */
 
 if (isset($_GET['action'])) {
-
     if ($_GET['action'] === 'logout') {
         unset($_SESSION['user']);
         header('Location: /');

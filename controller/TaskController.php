@@ -1,4 +1,7 @@
 <?php
+/* @var $pdo PDO */
+
+$taskProvider = new TaskProvider($pdo);
 
 if (!isset($_SESSION['user'])) {
     echo 'Страница вам не доступна';
@@ -8,14 +11,16 @@ if (!isset($_SESSION['user'])) {
 if (isset($_GET['action'])) {
 
     if ($_GET['action'] === 'add' && isset($_POST['description']) && !empty($_POST['description'])) {
-        TaskProvider::addTask(new Task($_POST['description']));
+        $task = new Task();
+        $task->setDescription($_POST['description']);
+        $taskProvider->addTask($task);
     }
     if ($_GET['action'] === 'setDone' && isset($_GET['id']) && !empty($_GET['id'])) {
-        $_SESSION['tasks'][$_GET['id']]->setIsDone(true);
+        $taskProvider->setIsDone(intval($_GET['id']), 1);
     }
 }
 
-$tasks = TaskProvider::getUndoneList();
+$tasks = $taskProvider->getUndoneList();
 require_once 'view/task.php';
 
 ?>

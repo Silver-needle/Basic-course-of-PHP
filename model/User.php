@@ -2,6 +2,7 @@
 
 class User
 {
+    private int $id;
     private string $username;
     private string $name;
 
@@ -22,6 +23,10 @@ class User
     public function getName(): string
     {
         return $this->name;
+    }
+    public function getId(): int
+    {
+        return $this->id;
     }
 }
 

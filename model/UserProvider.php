@@ -12,6 +12,16 @@ class UserProvider
 
     public function registerUser(User $user, string $plainPassword): bool
     {
+
+        /*
+        $isExistedStatement = $this->pdo->prepare('SELECT id FROM users WHERE username
+        =?');
+        $isExisted = $isExistedStatement->execute([$user->getUsername()]);
+        if ($isExisted) {
+            throw new Exeption('Такой пользователь существует');
+        }
+*/
+
         $statement = $this->pdo->prepare(
             'INSERT INTO users (name, username, password) VALUES (:name, :username,:password)'
         );
